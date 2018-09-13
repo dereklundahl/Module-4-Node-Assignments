@@ -1,0 +1,86 @@
+1. What is a Node module?
+
+A: A node module is a grouping of functions that can be imported as dependancies for any application to be used to aide in creating an application. They can be used as building blocks in order to use the functionality of code that is pre-written. They are similar to libraries in that they are imported with the `require()` method and thier functions/methods become available for use. 
+
+2. What is the main difference between exports and module.exports?
+
+A: The main difference is that `exports` is a reference to `module.exports` and any reassignment is not available outside of the module. `module.exports` is by default an empty object that is returned with the `require()` method. 
+
+3. Why is using exports recommended?
+
+A: Using exports is recommended because they are local variables for the module that they are used in. Using export prevents variable collisions from other modules that are being imported with the require function. I can't seem to find anything that actually says that this is why exports is recommended, in fact there seems to be a bit of confusion about it. What I understand from the lesson though, is that adding `exports = "Hola";` doesn't break the code because all the other statements are doing is adding exports to the object that is being exported (referencing the node object) where as adding `exports = "Hola";` is just creating a local variable. There seems to be quite a bit of confusion on line with some people saying that the only reason to use `exports` is that it is shorter syntax.
+
+Programming Questions
+Before you begin, make sure you have greeting.js and main.js in the following states:
+
+greeting.js
+exports.greetingEnglish = function(){
+ console.log("Hello");
+}
+
+exports.greetingJapanese = function(){
+ console.log("Konichiwa");
+}
+
+main.js
+const greetings = require("./greeting.js");
+
+// "Hello"
+greetings.greetingEnglish();
+
+// "Konichiwa"
+greetings.greetingJapanese();
+
+
+4. Add two more functions, greetingSpanish and greetingIcelandic, in greeting.js.
+
+```exports.greetingSpanish = function() {
+  console.log("Hola");
+}
+
+exports.greetingIcelandic = function() {
+  console.log("Hallo");
+}
+```
+
+5. Utilize the two functions in main.js just like greetingEnglish and greetingJapanese.
+
+```
+greeting.greetingSpanish();
+
+greeting.greetingIcelandic();
+```
+
+6. Create another Node module and import it into main.js. Your Node module should have at least two functions within it. Then, call a function from your Node module in main.js.
+Submit basic_node_app_answers.txt and your three .js files.
+
+I am unfortunately not feeling creative right now. Just trying to catch up.
+goodbye.js
+```
+exports.goodbyeEnglish = function() {
+  console.log("Later skater");
+}
+
+exports.goodbyeSpanish = function() {
+  console.log("Adios muchachos");
+}
+
+main.js
+```
+const greeting = require("./greeting.js");
+const goodbye = require("./goodbye.js");
+
+greeting.greetingEnglish();
+
+greeting.greetingJapanese();
+
+greeting.greetingSpanish();
+
+greeting.greetingIcelandic();
+
+goodbye.goodbyeEnglish();
+
+goodbye.goodbyeSpanish();
+```
+
+``` 
